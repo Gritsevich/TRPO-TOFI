@@ -10,7 +10,7 @@ const NavBar = observer(() => {
         <Navbar bg="dark" variant="dark">
             <Container>
                 <NavLink to="/" className="navbar-brand">
-                    <img src={"./favicon.ico"} img style={{ width: 30, height: 30 }}/> Marketplace
+                    <img src={"./favicon.ico"} style={{ width: 30, height: 30 }}/> Marketplace
                 </NavLink>
                 <Nav className="ml-auto">
                     <NavLink to="/delivery" className="nav-link">Доставка</NavLink>
@@ -24,6 +24,9 @@ const NavBar = observer(() => {
                     )}
                     {user.isAdmin && (
                         <NavLink to="/admin" className="nav-link">Панель управления</NavLink>
+                    )}
+                    {user.isSuperAdmin && (
+                        <NavLink to="/superadmin" className="nav-link">Панель управления</NavLink>
                     )}
                     <NavLink to="/basket" className="nav-link">
                         Корзина

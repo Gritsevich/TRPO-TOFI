@@ -7,7 +7,7 @@ const check = async (req, res, next) => {
             throw new Error('Корзина еще не создана')
         }
         const exist = await BasketModel.isExist(req.signedCookies.basketId)
-        if (!exist)) {
+        if (!exist) {
             res.clearCookie('basketId')
             throw new Error('Корзина не найдена в БД')
         }

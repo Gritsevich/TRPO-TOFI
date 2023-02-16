@@ -50,3 +50,19 @@ export const check = async () => {
         return false
     }
 }
+
+
+export const fetchUsers = async () => {
+    try {
+        const { data } = await authInstance.get('user/getall')
+        return data
+    } catch (e) {
+        alert(e.response.data.message)
+        return false
+    }
+}
+
+export const deleteUser = async (id) => {
+    const { data } = await authInstance.delete(`user/delete/${id}`)
+    return data
+}

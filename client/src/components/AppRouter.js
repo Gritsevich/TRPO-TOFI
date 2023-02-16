@@ -16,6 +16,8 @@ import AdminOrder from '../pages/AdminOrder.js'
 import AdminCategories from '../pages/AdminCategories.js'
 import AdminBrands from '../pages/AdminBrands.js'
 import AdminProducts from '../pages/AdminProducts.js'
+import SuperAdmin from '../pages/SuperAdmin.js'
+import SuperAdminUsers from '../pages/SuperAdminUsers.js'
 import { AppContext } from './AppContext.js'
 import { useContext } from 'react'
 import { observer } from 'mobx-react-lite'
@@ -46,6 +48,17 @@ const adminRoutes = [
     {path: '/admin/products', Component: AdminProducts},
 ]
 
+const superAdminRoutes = [
+    {path: '/admin', Component: Admin},
+    {path: '/admin/orders', Component: AdminOrders},
+    {path: '/admin/order/:id', Component: AdminOrder},
+    {path: '/admin/categories', Component: AdminCategories},
+    {path: '/admin/brands', Component: AdminBrands},
+    {path: '/admin/products', Component: AdminProducts},
+    {path: '/superadmin', Component: SuperAdmin},
+    {path: '/superadmin/users', Component: SuperAdminUsers},
+]
+
 const AppRouter = observer(() => {
     const { user } = useContext(AppContext)
     return (
@@ -57,6 +70,9 @@ const AppRouter = observer(() => {
                 <Route key={path} path={path} element={<Component />} />
             )}
             {user.isAdmin && adminRoutes.map(({path, Component}) =>
+                <Route key={path} path={path} element={<Component />} />
+            )}
+            {user.isSuperAdmin && superAdminRoutes.map(({path, Component}) =>
                 <Route key={path} path={path} element={<Component />} />
             )}
         </Routes>

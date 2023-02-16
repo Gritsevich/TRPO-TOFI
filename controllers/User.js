@@ -77,7 +77,7 @@ class User {
             if (!email || !password) {
                 throw new Error('Пустой email или пароль')
             }
-            if ( ! ['USER', 'ADMIN'].includes(role)) {
+            if ( ! ['USER', 'ADMIN', 'SUPERADMIN'].includes(role)) {
                 throw new Error('Недопустимое значение роли')
             }
             const hash = await bcrypt.hash(password, 5)
@@ -97,7 +97,7 @@ class User {
                 throw new Error('Нет данных для обновления')
             }
             let {email, password, role} = req.body
-            if (role && !['USER', 'ADMIN'].includes(role)) {
+            if (role && !['USER', 'ADMIN', 'SUPERADMIN'].includes(role)) {
                 throw new Error('Недопустимое значение роли')
             }
             if (password) {

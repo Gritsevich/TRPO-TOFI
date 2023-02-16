@@ -24,7 +24,7 @@ app.use(cookieParser(process.env.SECRET_KEY))
 // все маршруты приложения
 app.use('/api', router)
 
-// обработка ошибок
+// plugin для обработка ошибок
 app.use(errorMiddleware)
 
 const start = async () => {

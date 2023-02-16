@@ -7,6 +7,7 @@ import user from './user.js'
 import basket from './basket.js'
 import rating from './rating.js'
 import order from './order.js'
+import stripe from './stripe.js'
 
 const router = new express.Router()
 
@@ -17,5 +18,6 @@ router.use('/user', user)
 router.use('/basket', basket)
 router.use('/rating', rating)
 router.use('/order', order)
+router.use('/stripe', stripe)
 
 export default router

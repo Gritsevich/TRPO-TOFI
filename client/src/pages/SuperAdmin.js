@@ -4,7 +4,7 @@ import { AppContext } from '../components/AppContext.js'
 import { Link, useNavigate } from 'react-router-dom'
 import { logout } from '../http/userAPI.js'
 
-const Admin = () => {
+const SuperAdmin = () => {
     const { user } = useContext(AppContext)
     const navigate = useNavigate()
 
@@ -18,17 +18,14 @@ const Admin = () => {
         <Container>
             <h1>Панель управления</h1>
             <p>
-                Это панель управления магазином для менеджера
+                Это панель управления магазином для супер администратора
             </p>
             <ul>
-                <li><Link to="/admin/orders">Заказы в магазине</Link></li>
-                <li><Link to="/admin/categories">Категории каталога</Link></li>
-                <li><Link to="/admin/brands">Бренды каталога</Link></li>
-                <li><Link to="/admin/products">Товары каталога</Link></li>
+                <li><Link to="/superadmin/users">Пользователи</Link></li>
             </ul>
             <Button onClick={handleLogout}>Выйти</Button>
         </Container>
     )
 }
 
-export default Admin
+export default SuperAdmin

@@ -5,6 +5,7 @@ import { userCreate, guestCreate } from '../http/orderAPI.js'
 import { fetchBasket } from '../http/basketAPI.js'
 import { check as checkAuth } from '../http/userAPI.js'
 import { Navigate } from 'react-router-dom'
+import { Payment } from "../components/Payment.js";
 
 const isValid = (input) => {
     let pattern
@@ -106,54 +107,7 @@ const Checkout = () => {
     }
 
     return (
-        <Container>
-            {basket.count === 0 && <Navigate to="/basket" replace={true} />}
-            <h1 className="mb-4 mt-4">Оформление заказа</h1>
-            <Form noValidate onSubmit={handleSubmit}>
-                <Form.Control
-                    name="name"
-                    value={value.name}
-                    onChange={e => handleChange(e)}
-                    isValid={valid.name === true}
-                    isInvalid={valid.name === false}
-                    placeholder="Введите имя и фамилию..."
-                    className="mb-3"
-                />
-                <Form.Control
-                    name="email"
-                    value={value.email}
-                    onChange={e => handleChange(e)}
-                    isValid={valid.email === true}
-                    isInvalid={valid.email === false}
-                    placeholder="Введите адрес почты..."
-                    className="mb-3"
-                />
-                <Form.Control
-                    name="phone"
-                    value={value.phone}
-                    onChange={e => handleChange(e)}
-                    isValid={valid.phone === true}
-                    isInvalid={valid.phone === false}
-                    placeholder="Введите номер телефона..."
-                    className="mb-3"
-                />
-                <Form.Control
-                    name="address"
-                    value={value.address}
-                    onChange={e => handleChange(e)}
-                    isValid={valid.address === true}
-                    isInvalid={valid.address === false}
-                    placeholder="Введите адрес доставки..."
-                    className="mb-3"
-                />
-                <Form.Control
-                    name="comment"
-                    className="mb-3"
-                    placeholder="Комментарий к заказу..."
-                />
-                <Button type="submit">Отправить</Button>
-            </Form>
-        </Container>
+        <Payment />
     )
 }
 

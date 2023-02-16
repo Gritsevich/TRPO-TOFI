@@ -5,6 +5,7 @@ class UserStore {
     email = null
     isAuth = false
     isAdmin = false
+    isSuperAdmin = false
 
     constructor() {
         makeAutoObservable(this)
@@ -15,6 +16,7 @@ class UserStore {
         this.email = email
         this.isAuth = true
         this.isAdmin = role === 'ADMIN'
+        this.isSuperAdmin = role === 'SUPERADMIN'
     }
 
     logout() {
@@ -22,6 +24,7 @@ class UserStore {
         this.email = null
         this.isAuth = false
         this.isAdmin = false
+        this.isSuperAdmin = false
     }
 }
 
